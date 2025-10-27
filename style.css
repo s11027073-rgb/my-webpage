@@ -1,43 +1,54 @@
-/* 全域樣式 */
+/* ===== 全域樣式 ===== */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;  /* 設定整個頁面的字型 */
+    line-height: 1.6;               /* 調整整體行距 */
+    margin: 0;                        /* 移除 body 的外邊距 */
+    padding: 0;                       /* 移除 body 的內邊距 */
+    background-color: white;          /* 預設背景白色 */
+    color: black;                     /* 預設文字顏色黑色 */
+    font-size: 20px;                  /* 調整整體文字大小 */
 }
 
-/* 頁首 */
+/* ===== 頁首 ===== */
 header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
-    text-align: center;
+    background-color: #001f3f;       /* 頁首背景色深藍 */
+    color: white;                     /* 頁首文字顏色為白色 */
+    padding: 30px;                    /* 頁首內邊距 */
+    text-align: center;               /* 文字置中 */
 }
 
-/* 導航列 */
+/* ===== 導航列 ===== */
 header nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
+    color: white;                     /* 導航連結文字顏色 */
+    margin: 0 15px;                   /* 左右間距 */
+    text-decoration: none;            /* 移除底線 */
+    font-weight: bold;                /* 文字加粗 */
 }
 
 header nav a:hover {
-    text-decoration: underline;
+    text-decoration: underline;       /* 滑鼠滑過時加底線 */
 }
 
-/* 區塊樣式 */
+/* ===== 區塊樣式 ===== */
 section {
-    padding: 50px 20px;
-    max-width: 800px;
-    margin: auto;
+    padding: 100px 200px;               /* 區塊內邊距 */
+    max-width: 800px;                 /* 區塊最大寬度 */
+    margin: auto;                     /* 區塊置中 */
 }
 
+/* 奇數區塊白底黑字 */
+section:nth-child(odd) {
+    background-color: white;          /* 白底 */
+    color: black;                     /* 文字黑色 */
+}
+
+/* 偶數區塊灰底黑字 */
 section:nth-child(even) {
-    background-color: #f4f4f4;
+    background-color: #f4f4f4;        /* 淺灰底 */
+    color: black;                     /* 文字黑色 */
 }
 
-/* 標題 */
+/* ===== 標題 ===== */
 h1, h2 {
-    text-align: center;
+    text-align: center;               /* 標題置中 */
 }
