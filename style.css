@@ -1,54 +1,180 @@
-/* ===== 全域樣式 ===== */
+/* ==========================
+   全域樣式
+   ========================== */
 body {
-    font-family: Arial, sans-serif;  /* 設定整個頁面的字型 */
-    line-height: 1.6;               /* 調整整體行距 */
-    margin: 0;                        /* 移除 body 的外邊距 */
-    padding: 0;                       /* 移除 body 的內邊距 */
-    background-color: white;          /* 預設背景白色 */
-    color: black;                     /* 預設文字顏色黑色 */
-    font-size: 20px;                  /* 調整整體文字大小 */
+    font-family: Arial, sans-serif;
+    line-height: 2;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #f5f5f5, #e0f7fa); /* 漸層背景 */
+    color: #000;
+    font-size: 25px;
+    transition: background 1s;
+    overflow-x: hidden;
 }
 
-/* ===== 頁首 ===== */
+/* ==========================
+   頁首
+   ========================== */
 header {
-    background-color: #001f3f;       /* 頁首背景色深藍 */
-    color: white;                     /* 頁首文字顏色為白色 */
-    padding: 30px;                    /* 頁首內邊距 */
-    text-align: center;               /* 文字置中 */
+    background-color: #001f3f;
+    color: white;
+    padding: 80px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-/* ===== 導航列 ===== */
+header h1 {
+    font-size: 48px;
+    background: linear-gradient(90deg, #ff6b6b, #5f27cd, #54a0ff);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 8s ease infinite;
+}
+
+/* 漸層文字動畫 */
+@keyframes gradient-animation {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
 header nav a {
-    color: white;                     /* 導航連結文字顏色 */
-    margin: 0 15px;                   /* 左右間距 */
-    text-decoration: none;            /* 移除底線 */
-    font-weight: bold;                /* 文字加粗 */
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    transition: color 0.3s, transform 0.3s;
 }
 
 header nav a:hover {
-    text-decoration: underline;       /* 滑鼠滑過時加底線 */
+    color: #ff6b6b;
+    transform: scale(1.2); /* hover 放大 */
 }
 
-/* ===== 區塊樣式 ===== */
+/* ==========================
+   區塊樣式
+   ========================== */
 section {
-    padding: 100px 200px;               /* 區塊內邊距 */
-    max-width: 800px;                 /* 區塊最大寬度 */
-    margin: auto;                     /* 區塊置中 */
+    padding: 160px 40px;
+    max-width: 1000px;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.5s, box-shadow 0.5s;
 }
 
-/* 奇數區塊白底黑字 */
-section:nth-child(odd) {
-    background-color: white;          /* 白底 */
-    color: black;                     /* 文字黑色 */
+section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
 }
 
-/* 偶數區塊灰底黑字 */
+/* 偶數區塊改灰底並漸變 */
 section:nth-child(even) {
-    background-color: #f4f4f4;        /* 淺灰底 */
-    color: black;                     /* 文字黑色 */
+    background: linear-gradient(135deg, #e0e0e0, #f0f0f0);
 }
 
-/* ===== 標題 ===== */
-h1, h2 {
-    text-align: center;               /* 標題置中 */
+/* 區塊標題 */
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 36px;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #ff6b6b;
+    margin: 10px auto 0 auto;
+    border-radius: 2px;
+}
+
+/* ==========================
+   圖片展示區
+   ========================== */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* 第一、二張大圖 */
+.gallery .item:nth-child(1),
+.gallery .item:nth-child(2) {
+    flex: 1 1 48%;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+/* 圖片樣式 */
+.gallery .item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s, filter 0.5s;
+    border-radius: 10px;
+    cursor: pointer;
+    filter: brightness(0.95);
+}
+
+.gallery .item img:hover {
+    transform: scale(1.1) rotate(2deg); /* hover 放大+微旋轉 */
+    filter: brightness(1);
+}
+
+/* ==========================
+   點擊放大 lightbox
+   ========================== */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.lightbox.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox img {
+    max-width: 95%;
+    max-height: 95%;
+    border-radius: 15px;
+    animation: popIn 0.5s ease forwards;
+}
+
+@keyframes popIn {
+    0% {transform: scale(0.5);}
+    100% {transform: scale(1);}
+}
+
+/* ==========================
+   下滑淡入效果
+   ========================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px) rotateX(10deg); /* 淡入+旋轉效果 */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
 }
