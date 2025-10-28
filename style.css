@@ -178,3 +178,20 @@ h2::after {
     opacity: 1;
     transform: translateY(0) rotateX(0);
 }
+.next-btn {
+  display: block;
+  margin: 20px auto;
+  background-color: #0078d7; /* 你網站的藍色風格 */
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.next-btn:hover {
+  background-color: #005a9e;
+}
+

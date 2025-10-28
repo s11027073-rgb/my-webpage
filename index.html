@@ -156,7 +156,7 @@ App 端的驗證與顯示：選擇支援通用藍牙低功耗 (BLE) 服務和特
 <!-- 聯絡我 -->
 <section id="contact">
     <h2>聯絡我</h2>
-    <p>作者: 莊鎮鴻</p>
+    <p>創作者: 莊鎮鴻</p>
     <p>電話:0988-432-718</p>
     <p>Email: hu9201150115@gmail.com</p>
 </section>
@@ -164,5 +164,17 @@ App 端的驗證與顯示：選擇支援通用藍牙低功耗 (BLE) 服務和特
 
 <!-- JS 路徑 -->
 <script src="script.js"></script>
+<script>
+document.querySelectorAll('section').forEach((section, index, sections) => {
+  const next = sections[index + 1];
+  if (next) {
+    const btn = document.createElement('button');
+    btn.className = 'next-btn';
+    btn.textContent = '下一步 →';
+    btn.onclick = () => next.scrollIntoView({ behavior: 'smooth' });
+    section.appendChild(btn);
+  }
+});
+</script>
 </body>
 </html>
